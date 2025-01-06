@@ -9,9 +9,10 @@ function Logo() {
         src={logo}
         quality={100}
         priority
-        height="70"
-        width="70"
+        height="45"
+        width="45"
         alt="sewaFinder logo"
+        className=""
       />
       {/* sewaFinder */}{" "}
     </Link>
