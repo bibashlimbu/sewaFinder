@@ -32,7 +32,7 @@ function BookNowCard({ service, user }) {
       </CardHeader>
       <CardContent>
         <div className="mt-3 bg-primary rounded-md p-3 my-3">
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-center gap-2 ">
             <Sparkle color="white" />
             <p className="text-white font-semibold">Price description</p>
           </div>

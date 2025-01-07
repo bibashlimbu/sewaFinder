@@ -8,7 +8,7 @@ function ServiceDetails({ service }) {
       <div className="flex items-center justify-between my-2">
         <div className="flex items-center gap-1">
           <GoBackButton />
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
+          <h1 className="text-sm md:text-2xl lg:text-3xl font-semibold">
             {service.serviceName}
           </h1>
         </div>
@@ -32,7 +32,7 @@ function ServiceDetails({ service }) {
       </div>
       <Separator />
       <div className="mt-3">
-        <p>{service.description}</p>
+        <p className="text-sm">{service.description}</p>
       </div>
     </div>
   );

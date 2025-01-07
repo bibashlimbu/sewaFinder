@@ -8,7 +8,7 @@ function NotFound({ src, alt, content }) {
   return (
     <Section>
       <div className="flex flex-col justify-center items-center gap-2">
-        <img src={src} alt={alt} className="w-1/2" />
+        <img src={src} alt={alt} className="lg:w-4/12 md:w-6/12 w-10/12" />
         <h4 className="font-bold">!!! No {content} found !!!</h4>
         <Button onClick={() => router.push("/")}>Goto Home</Button>
       </div>
