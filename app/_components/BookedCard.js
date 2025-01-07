@@ -3,25 +3,14 @@ import { Separator } from "@/components/ui/separator";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 
-const booked = {
-  id: 1,
-  serviceName: "Exterior Cleaning",
-  employee: "John Doe",
-  bookingDate: "jan 1, 2023",
-  price: "2000",
-
-  image:
-    "https://ldalruqkubplvhztlaqx.supabase.co/storage/v1/object/sign/service_image/sercice-img1?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJzZXJ2aWNlX2ltYWdlL3NlcmNpY2UtaW1nMSIsImlhdCI6MTczNTYxODk5MSwiZXhwIjoyMjA4NjU4OTkxfQ.Zi9sFFWJ-I9ZQMQXvj17uMHsL6gCkihRj0Bk530i_vU&t=2024-12-31T04%3A23%3A11.712Z",
-};
-
 function BookedCard({ bookedService }) {
   const {
     bookingDate,
     services: { id: serviceId, image, price, employee, priceUnit, serviceName },
   } = bookedService;
   return (
-    <Card className="p-5">
-      <CardContent>
+    <Card className="py-3">
+      <CardContent className="px-4">
         <div className="flex gap-2 mb-2">
           <div className="relative aspect-video w-40">
             <Image fill src={image} alt="Booked Service" />
@@ -46,7 +35,9 @@ function BookedCard({ bookedService }) {
           </div>
         </div>
       </CardContent>
-      <CardFooter>Your booking has been forwarded to Sewa Finder</CardFooter>
+      <CardFooter className="text-sm pb-0 px-4">
+        Your booking has been forwarded to Sewa Finder
+      </CardFooter>
     </Card>
   );
 }
