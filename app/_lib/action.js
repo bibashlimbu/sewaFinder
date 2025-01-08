@@ -6,7 +6,6 @@ import supabase from "./supabase";
 import { revalidatePath } from "next/cache";
 
 export async function createBooking(formData) {
-  console.log(formData);
   const session = await auth();
   if (!session) throw new Error("you must be login ");
 

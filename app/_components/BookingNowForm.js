@@ -16,7 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { createBooking } from "../_lib/action";
 import { useBooking } from "./BookingContext";
-import { format } from "date-fns";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
+import { Router } from "next/router";
 
 const formSchema = z.object({
   fullName: z
@@ -51,6 +53,7 @@ const formSchema = z.object({
 function BookingNowForm({ service }) {
   const { id } = service;
   const { date } = useBooking();
+  const [loading, setLoading] = useState(false);
   // const bookingDate = format(date, "PP");
 
   // 1. Initialize the form
@@ -67,10 +70,18 @@ function BookingNowForm({ service }) {
   });
 
   // 2. Define a submit handler
-  function onSubmit(values) {
-    // Do something with the form values.
-    // This will be type-safe and validated
-    createBooking({ ...values, serviceId: id, bookingDate: date });
+  async function onSubmit(values) {
+    setLoading(true); // Start loading
+    try {
+      await createBooking({ ...values, serviceId: id, bookingDate: date });
+      // Handle successful submission (e.g., show a success message)
+      Router.push("/thankyou");
+    } catch (error) {
+      // Handle errors (e.g., show an error message)
+      console.log(error.message);
+    } finally {
+      setLoading(false); // Stop loading
+    }
   }
 
   return (
@@ -164,8 +175,15 @@ function BookingNowForm({ service }) {
             )}
           />
         </div>
-        <Button type="submit" className="w-full">
-          Confirm Booking
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? (
+            <>
+              <Loader2 className="animate-spin" />
+              Confirming...
+            </>
+          ) : (
+            "Confirm Booking"
+          )}
         </Button>
       </form>
     </Form>
